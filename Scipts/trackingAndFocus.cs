@@ -30,18 +30,6 @@ public class trackingAndFocus : MonoBehaviour
 
     
     private List<string> imagesName;
-    /*[SerializeField]
-    private Text cube;
-    [SerializeField]
-    private Text cap;
-    [SerializeField]
-    private Text cylindre;
-    [SerializeField]
-    private Text video;
-    [SerializeField]
-    private Text araignee;
-    [SerializeField]
-    private Text sphere;*/
 
 
     // Instancie tous les objet et les rend invisible sinon ils sont tous affichés à l'origine de la caméra.
@@ -65,33 +53,8 @@ public class trackingAndFocus : MonoBehaviour
         {
             imagesName.Add(image.name);
         }
-        /*for(int i = 0; i < spawnedPrefabs.Count; i++)
-        {
-            if(i == 0)
-            {
-                cap.text = imagesName[0];
-            }
-            if (i == 1)
-            {
-                cylindre.text = imagesName[1];
-            }
-            if (i == 2)
-            {
-                cube.text = imagesName[2];
-            }
-            if (i == 3)
-            {
-                sphere.text = imagesName[3];
-            }
-            if (i == 4)
-            {
-                araignee.text = imagesName[4];
-            }
-            if (i == 5)
-            {
-                video.text = imagesName[5];
-            }
-        }*/
+
+        numImageFocused.text = focusPosition.ToString();
     }
 
     // Binding
@@ -204,15 +167,17 @@ public class trackingAndFocus : MonoBehaviour
 
     // Pour connaître la position de l'objet que l'on veut focus
     private int focusPosition = 1;
+    // Permet de voir le numéro de l'image focus
+    [SerializeField]
+    private Text numImageFocused; 
 
-    /*[SerializeField]
-    private Text focusedImage;*/
 
     public void incPosition()
     {
         if (focusPosition < imageDetected)
         {
             focusPosition += 1;
+            numImageFocused.text = focusPosition.ToString();
         }
     }
 
@@ -221,6 +186,7 @@ public class trackingAndFocus : MonoBehaviour
         if (focusPosition > 1)
         {
             focusPosition -= 1;
+            numImageFocused.text = focusPosition.ToString();
         }
     }
 

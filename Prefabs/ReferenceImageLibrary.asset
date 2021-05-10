@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5245563351627628676
+  m_GuidHigh: 6519403144455265461
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4713119589769822910
+      m_GuidHigh: 8498781084188633521
+    m_SerializedTextureGuid:
+      m_GuidLow: 11728691876898576318
+      m_GuidHigh: 16988979383670499547
+    m_Size: {x: 0.1, y: 0.14430285}
+    m_SpecifySize: 1
+    m_Name: cube
+    m_Texture: {fileID: 2800000, guid: ea8c97beaf1ea2c4db681decbcfac4eb, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4717466592956721521
+      m_GuidHigh: 16384931302986002339
+    m_SerializedTextureGuid:
+      m_GuidLow: 7504207500398568283
+      m_GuidHigh: 9466424537213503162
+    m_Size: {x: 0.1, y: 0.14227036}
+    m_SpecifySize: 1
+    m_Name: sphere
+    m_Texture: {fileID: 2800000, guid: 6e14235b4cf66824ba06a719f67e5f83, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5088361063396715191
+      m_GuidHigh: 15070368767363967667
+    m_SerializedTextureGuid:
+      m_GuidLow: 14962178704613582770
+      m_GuidHigh: 14910708268868497897
+    m_Size: {x: 0.1, y: 0.14014652}
+    m_SpecifySize: 1
+    m_Name: cylindre
+    m_Texture: {fileID: 2800000, guid: 426827b25642cfa4e9f162932b7aedce, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5081741710913735229
+      m_GuidHigh: 10575812264750083756
+    m_SerializedTextureGuid:
+      m_GuidLow: 2207990018964208295
+      m_GuidHigh: 14694319246471254552
+    m_Size: {x: 0.1, y: 0.14173913}
+    m_SpecifySize: 1
+    m_Name: cap
+    m_Texture: {fileID: 2800000, guid: 4bf83aa75b391ea418d21a3680b5eccb, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4795008671926119919
+      m_GuidHigh: 10033651537867948439
+    m_SerializedTextureGuid:
+      m_GuidLow: 5549659284935119853
+      m_GuidHigh: 17845433099790624009
+    m_Size: {x: 0.1, y: 0.14139861}
+    m_SpecifySize: 1
+    m_Name: video
+    m_Texture: {fileID: 2800000, guid: 5f0193ed59b74d0409a504e8dab6a7f7, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5187535002751839933
+      m_GuidHigh: 5112618805077516952
+    m_SerializedTextureGuid:
+      m_GuidLow: 9508359787163851812
+      m_GuidHigh: 9118720268429239161
+    m_Size: {x: 0.1, y: 0.14148715}
+    m_SpecifySize: 1
+    m_Name: spider
+    m_Texture: {fileID: 2800000, guid: 56829c247ad983f47923e165c5338c7e, type: 3}

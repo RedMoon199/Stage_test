@@ -28,9 +28,6 @@ public class trackingMode : MonoBehaviour
     [SerializeField]
     private Text lockedImage;
 
-    [SerializeField]
-    private Text selectedDistance;
-
     private List<string> imagesName;
 
     // Instancie tous les objet et les rend invisible sinon ils sont tous affichés à l'origine de la caméra.
@@ -60,7 +57,6 @@ public class trackingMode : MonoBehaviour
     private void OnEnable()
     {
         trackedImageManager.trackedImagesChanged += ImageChanged;
-        
     }
 
     // Unbind
@@ -140,7 +136,7 @@ public class trackingMode : MonoBehaviour
     // Pour garder le focus sur un objet
     private bool focus = false;
 
-    public void enableFocus()
+    private void enableFocus()
     {
         focus = true;
     }
@@ -148,6 +144,11 @@ public class trackingMode : MonoBehaviour
     public void unableFocus()
     {
         focus = false;
+        lockedImage.text = "";
+        if(distanceFocus == true)
+        {
+            onDistanceUnable();
+        }
     }
 
 
@@ -156,17 +157,6 @@ public class trackingMode : MonoBehaviour
 
     // Entier permettant de choisir l'objet.
     private int imageIndex = 0;
-
-    /*public void EnableSelectImage(bool enable)
-    {
-        selectImage = enabled;
-        if (enable == true)
-        {
-            // On fait le focus sur l'objet que l'on souhaite détecter.
-            focus = enable;
-            lockedImage.text = imagesName[imageIndex];
-        }
-    }*/
 
     public void changeSelectedImage()
     {
@@ -188,7 +178,7 @@ public class trackingMode : MonoBehaviour
 
     
 
-    private void closestImage(ARTrackedImagesChangedEventArgs eventArgs)
+    private void sortImage(ARTrackedImagesChangedEventArgs eventArgs)
     {
         countImage(eventArgs);
         Vector3 screenCenter = Camera.main.transform.position;
@@ -251,7 +241,7 @@ public class trackingMode : MonoBehaviour
     // Nombre d'images repérées dans l'environnement
     private int detectedImage = 0;
 
-    // EventHandler. Compte le nombre d'images reconnus et le met à jour à chaque fois que les images sont mises à jours.
+    // Compte le nombre d'images reconnus et le met à jour à chaque fois que les images sont mises à jours.
     private void countImage(ARTrackedImagesChangedEventArgs eventArgs)
     {
         int count = 0;
@@ -269,19 +259,18 @@ public class trackingMode : MonoBehaviour
 
 
 
-
     // Pour connaître la position de l'objet que l'on veut focus
     private int focusPosition = 1;
     // Permet de voir le numéro de l'image focus
     [SerializeField]
-    private Text infoFocusedPosition;
+    private Text selectedDistance;
 
     public void incPosition()
     {
         if (focusPosition < detectedImage)
         {
             focusPosition += 1;
-            infoFocusedPosition.text = focusPosition.ToString();
+            selectedDistance.text = focusPosition.ToString();
         }
     }
 
@@ -290,7 +279,39 @@ public class trackingMode : MonoBehaviour
         if (focusPosition > 1)
         {
             focusPosition -= 1;
-            infoFocusedPosition.text = focusPosition.ToString();
+            selectedDistance.text = focusPosition.ToString();
         }
+    }
+
+
+
+
+    // Action se réalisant lors d'appui sur les boutons.
+
+    //Ici on se contente d'activer le mode focus et d'initialiser l'image focus.
+    public void onSelectEnable()
+    {
+        lockedImage.text = imagesName[imageIndex];
+        this.enableFocus();
+    }
+
+    // Booléan permettant de savoir si l'on doit faire un unbinding
+    private bool distanceFocus = false;
+
+    // Ici on réinitialise la distance de focus, on active le focus et on abonne la sélection de distance au changement d'image.
+    public void onDistanceEnable()
+    {
+        distanceFocus = true;
+        focusPosition = 1;
+        selectedDistance.text = focusPosition.ToString();
+        trackedImageManager.trackedImagesChanged += sortImage;
+        this.enableFocus();
+    }
+
+    // Ici on désabonne la sélection de distance au changement d'image.
+    public void onDistanceUnable()
+    {
+        trackedImageManager.trackedImagesChanged -= sortImage;
+        distanceFocus = false;
     }
 }
